@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class ControllerAdvisor {
     @ExceptionHandler(BindException.class)
-    public ResponseEntity<ExceptionResponse> handleValidationException(BindException ex) {
-        StringBuilder errorMessage = new StringBuilder("Validation error: ");
-        for (FieldError error : ex.getFieldErrors()) {
+    public ResponseEntity<ExceptionResponse> handleValidationException(BindException bindException) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (FieldError error : bindException.getFieldErrors()) {
             errorMessage.append(error.getDefaultMessage()).append("; ");
         }
         errorMessage.delete(errorMessage.length() - 2, errorMessage.length());
