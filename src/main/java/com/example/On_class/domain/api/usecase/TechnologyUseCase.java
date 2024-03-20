@@ -4,6 +4,8 @@ import com.example.On_class.domain.api.ITechnologyServicePort;
 import com.example.On_class.domain.model.Technology;
 import com.example.On_class.domain.spi.ITechnologyPersistencePort;
 
+import java.util.List;
+
 
 public class TechnologyUseCase implements ITechnologyServicePort {
 
@@ -16,5 +18,10 @@ public class TechnologyUseCase implements ITechnologyServicePort {
     public void saveTechnology(Technology technology) {
         technologyPersistencePort.saveTechnology(technology);
     }
-    //List
+
+    @Override
+    public List<Technology> getAllTechnologies(Integer page, Integer size, Boolean orderFlag) {
+        return technologyPersistencePort.getAllTechnologies(page, size, orderFlag);
+    }
+
 }
