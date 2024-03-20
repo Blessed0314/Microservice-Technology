@@ -1,6 +1,5 @@
 package com.example.On_class.adapters.driving.http.dto.request;
 
-
 import com.example.On_class.adapters.driving.http.util.MessageConstants;
 import org.junit.jupiter.api.Test;
 import javax.validation.ConstraintViolation;
@@ -26,7 +25,7 @@ class AddTechnologyRequestTest {
     }
 
     @Test
-    void testValidationNotBlank() {
+    void testValidationNotBlankAndMinSize() {
         AddTechnologyRequest request = new AddTechnologyRequest("", "");
         Set<ConstraintViolation<AddTechnologyRequest>> violations = validator.validate(request);
         assertEquals(4, violations.size());
