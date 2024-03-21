@@ -8,9 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class TechnologyUseCaseTest {
     @Mock
@@ -32,5 +34,18 @@ class TechnologyUseCaseTest {
         technologyServicePort.saveTechnology(technology);
 
         verify(technologyPersistencePort, times(1)).saveTechnology(technology);
+    }
+
+    @Test
+    void testGetAllTechnologies() {
+        List<Technology> expectedTechnologyList = new ArrayList<>();
+        expectedTechnologyList.add(new Technology(2L,"Java","Programing Language"));
+        expectedTechnologyList.add(new Technology(3L,"Python","Programming Language"));
+
+        when(technologyPersistencePort.getAllTechnologies(1,10,true)).thenReturn(expectedTechnologyList);
+
+        List<Technology> actualTechnologyList = technologyServicePort.getAllTechnologies(1,10,true);
+
+        assertEquals(expectedTechnologyList, actualTechnologyList);
     }
 }
