@@ -5,18 +5,18 @@ import lombok.Setter;
 
 import java.util.Set;
 
+
 @Getter
-public class Technology {
+public class Capacity {
     private final Long id;
     private final String name;
     private final String description;
     @Setter
-    private Set<Capacity> capacities;
+    private Set<Technology> technologies;
 
-    public Technology(long id, String name, String description){
+    public Capacity(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
-
 }
