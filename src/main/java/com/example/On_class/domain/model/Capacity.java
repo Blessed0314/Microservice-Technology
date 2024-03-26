@@ -7,10 +7,12 @@ public class Capacity {
     private final String description;
     private List<Technology> technologies;
 
-    public Capacity(Long id, String name, String description) {
+
+    public Capacity(Long id, String name, String description, List<Technology> technologies) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.technologies = technologies;
     }
 
     public Long getId() {

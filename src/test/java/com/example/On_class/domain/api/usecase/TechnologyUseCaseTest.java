@@ -17,12 +17,11 @@ import static org.mockito.Mockito.*;
 class TechnologyUseCaseTest {
     @Mock
     private ITechnologyPersistencePort technologyPersistencePort;
-
     private ITechnologyServicePort technologyServicePort;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         technologyServicePort = new TechnologyUseCase(technologyPersistencePort);
     }
 
