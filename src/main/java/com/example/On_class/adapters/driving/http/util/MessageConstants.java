@@ -5,12 +5,10 @@ public final class MessageConstants {
         throw new IllegalStateException("Utility class");
     }
 
-    public enum Field {
-        NAME,
-        DESCRIPTION,
-    }
     public static final String FIELD_NAME_NULL_MESSAGE = "Field 'name' cannot be null";
     public static final String FIELD_NAME_MAX_LENGTH_MESSAGE = "Field 'name' must have a minimum of 4 or a maximum of 50 characters";
     public static final String FIELD_DESCRIPTION_NULL_MESSAGE = "Field 'description' cannot be null";
     public static final String FIELD_DESCRIPTION_MAX_LENGTH_MESSAGE = "Field 'description' must have a minimum of 10 or a maximum of 90 characters";
+    public static final String FIELD_LIST_TECHNOLOGIES_EMPTY_MESSAGE = "Field 'Technologies' cannot be empty";
+    public static final String FIELD_LIST_CAPACITIES_LENGTH_MESSAGE = "Field 'Technologies' must have a minimum of 3 or a maximum of 20 technologies";
 }

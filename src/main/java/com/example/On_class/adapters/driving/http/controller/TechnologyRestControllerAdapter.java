@@ -26,7 +26,7 @@ public class TechnologyRestControllerAdapter {
         technologyServicePort.saveTechnology(technologyRequestMapper.addRequestToTechnology(request));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    @GetMapping("/search")
+    @GetMapping("/")
     public ResponseEntity<List<TechnologyResponse>> getTechnologyList(@RequestParam Integer page, @RequestParam Integer size, @RequestParam Boolean ascendingFlag){
         return ResponseEntity.ok(technologyResponseMapper.toTechnologyResponseList(technologyServicePort.getAllTechnologies(page, size, ascendingFlag)));
     }

@@ -9,5 +9,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ITechnologyEntityMapper {
     TechnologyEntity toEntity(Technology technology);
+    Technology toModel(TechnologyEntity entity);
     List<Technology> toModelList(List<TechnologyEntity> technologyEntities);
 }

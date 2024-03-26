@@ -1,6 +1,7 @@
 package com.example.On_class.configuration.exceptionhandler;
 
 import com.example.On_class.adapters.driven.jpa.mysql.exception.NoDataFoundException;
+import com.example.On_class.adapters.driven.jpa.mysql.exception.RepeatTechnologiesInListException;
 import com.example.On_class.adapters.driven.jpa.mysql.exception.TechnologyAlreadyExistsException;
 import com.example.On_class.configuration.Constants;
 import lombok.RequiredArgsConstructor;
@@ -42,5 +43,11 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> handleNoDataFoundException() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionResponse(
                 Constants.NO_DATA_FOUND_EXCEPTION_MESSAGE, HttpStatus.NOT_FOUND.toString(), LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(RepeatTechnologiesInListException.class)
+    public ResponseEntity<ExceptionResponse> handleRepeatTechnologiesInListException() {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.REPEAT_TECHNOLOGY_IN_LIST_EXCEPTION_MESSAGE, HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
     }
 }
