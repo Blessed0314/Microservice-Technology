@@ -2,6 +2,7 @@ package com.example.On_class.adapters.driving.http.controller;
 
 import com.example.On_class.adapters.driving.http.dto.request.AddCapacityRequest;
 import com.example.On_class.adapters.driving.http.mapper.ICapacityRequestMapper;
+import com.example.On_class.adapters.driving.http.mapper.ICapacityResponseMapper;
 import com.example.On_class.domain.api.ICapacityServicePort;
 import com.example.On_class.domain.model.Technology;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,8 @@ class CapacityRestControllerAdapterTest {
     private ICapacityServicePort capacityServicePort;
     @Mock
     private ICapacityRequestMapper capacityRequestMapper;
+    @Mock
+    private ICapacityResponseMapper capacityResponseMapper;
 
     @BeforeEach
     void setUp() {
@@ -33,7 +36,7 @@ class CapacityRestControllerAdapterTest {
     @Test
     void testAddCapacity() {
         CapacityRestControllerAdapter controller = new CapacityRestControllerAdapter(
-                capacityServicePort, capacityRequestMapper);
+                capacityServicePort, capacityRequestMapper, capacityResponseMapper);
         Technology technology1 = new Technology(1L, "Java", "Programming Language" );
         List<Technology> technologies = new ArrayList<>();
         technologies.add(technology1);

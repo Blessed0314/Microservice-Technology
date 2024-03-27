@@ -8,7 +8,6 @@ import java.util.List;
 
 
 public class TechnologyUseCase implements ITechnologyServicePort {
-
     private ITechnologyPersistencePort technologyPersistencePort;
 
     public TechnologyUseCase(ITechnologyPersistencePort technologyPersistencePort) {
@@ -23,5 +22,4 @@ public class TechnologyUseCase implements ITechnologyServicePort {
     public List<Technology> getAllTechnologies(Integer page, Integer size, Boolean orderFlag) {
         return technologyPersistencePort.getAllTechnologies(page, size, orderFlag);
     }
-
 }
