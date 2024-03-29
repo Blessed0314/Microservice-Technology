@@ -15,4 +15,5 @@ public interface ICapacityRepository extends JpaRepository<CapacityEntity, Long>
             "ORDER BY CASE WHEN :ascendingFlag = true THEN SIZE(c.technologies) END ASC, " +
             "CASE WHEN :ascendingFlag = false THEN SIZE(c.technologies) END DESC")
     Page<CapacityEntity> findAllOrderByTechnologies(Pageable pagination, boolean ascendingFlag);
+
 }
