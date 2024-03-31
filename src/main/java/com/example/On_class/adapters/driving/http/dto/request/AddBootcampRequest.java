@@ -1,7 +1,7 @@
 package com.example.On_class.adapters.driving.http.dto.request;
 
 import com.example.On_class.adapters.driving.http.util.MessageConstants;
-import com.example.On_class.domain.model.Technology;
+import com.example.On_class.domain.model.Capacity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,12 +12,13 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class AddCapacityRequest {
+public class AddBootcampRequest {
     @NotBlank(message = MessageConstants.FIELD_NAME_NULL_MESSAGE)
     private final String name;
     @NotBlank(message = MessageConstants.FIELD_DESCRIPTION_NULL_MESSAGE)
     private final String description;
-    @NotEmpty(message = MessageConstants.FIELD_LIST_TECHNOLOGIES_EMPTY_MESSAGE)
-    @Size(min = 3, max = 20, message = MessageConstants.FIELD_LIST_TECHNOLOGIES_LENGTH_MESSAGE)
-    private final List<Technology> technologies;
+    @NotEmpty(message = MessageConstants.FIELD_LIST_CAPACITIES_EMPTY_MESSAGE)
+    @Size(min = 1, max = 4, message = MessageConstants.FIELD_LIST_CAPACITIES_LENGTH_MESSAGE)
+    private final List<Capacity> capacities;
+
 }

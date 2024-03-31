@@ -10,5 +10,8 @@ public final class MessageConstants {
     public static final String FIELD_DESCRIPTION_NULL_MESSAGE = "Field 'description' cannot be null";
     public static final String FIELD_DESCRIPTION_MAX_LENGTH_MESSAGE = "Field 'description' must have a minimum of 10 or a maximum of 90 characters";
     public static final String FIELD_LIST_TECHNOLOGIES_EMPTY_MESSAGE = "Field 'Technologies' cannot be empty";
-    public static final String FIELD_LIST_CAPACITIES_LENGTH_MESSAGE = "Field 'Technologies' must have a minimum of 3 or a maximum of 20 technologies";
+    public static final String FIELD_LIST_TECHNOLOGIES_LENGTH_MESSAGE = "Field 'Technologies' must have a minimum of 3 or a maximum of 20 technologies";
+    public static final String FIELD_LIST_CAPACITIES_EMPTY_MESSAGE = "Field 'Capacities' cannot be empty";
+    public static final String FIELD_LIST_CAPACITIES_LENGTH_MESSAGE = "Field 'Capacities' must have a minimum of 1 or a maximum of 4 capacities";
+
 }

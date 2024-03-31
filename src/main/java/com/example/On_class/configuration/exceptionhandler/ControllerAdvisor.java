@@ -1,6 +1,7 @@
 package com.example.On_class.configuration.exceptionhandler;
 
 import com.example.On_class.adapters.driven.jpa.mysql.exception.NoDataFoundException;
+import com.example.On_class.adapters.driven.jpa.mysql.exception.RepeatCapacitiesInListException;
 import com.example.On_class.adapters.driven.jpa.mysql.exception.RepeatTechnologiesInListException;
 import com.example.On_class.adapters.driven.jpa.mysql.exception.TechnologyAlreadyExistsException;
 import com.example.On_class.configuration.Constants;
@@ -49,5 +50,11 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> handleRepeatTechnologiesInListException() {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
                 Constants.REPEAT_TECHNOLOGY_IN_LIST_EXCEPTION_MESSAGE, HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(RepeatCapacitiesInListException.class)
+    public ResponseEntity<ExceptionResponse> handleRepeatCapacitiesInListException() {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.REPEAT_CAPACITY_IN_LIST_EXCEPTION_MESSAGE, HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
     }
 }

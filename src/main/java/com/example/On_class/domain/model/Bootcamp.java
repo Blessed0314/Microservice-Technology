@@ -8,6 +8,13 @@ public class Bootcamp {
     private final String description;
     private List<Capacity> capacities;
 
+    public Bootcamp(Long id, String name, String description, List<Capacity> capacities) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.capacities = capacities;
+    }
+
     public Long getId() {
         return id;
     }
