@@ -2,7 +2,7 @@ package com.example.On_class.adapters.driving.http.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+
 
 @AllArgsConstructor
 @Getter

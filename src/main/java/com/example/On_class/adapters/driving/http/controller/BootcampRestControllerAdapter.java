@@ -2,9 +2,7 @@ package com.example.On_class.adapters.driving.http.controller;
 
 import com.example.On_class.adapters.driving.http.dto.request.AddBootcampRequest;
 import com.example.On_class.adapters.driving.http.mapper.IBootcampRequestMapper;
-import com.example.On_class.adapters.driving.http.mapper.ICapacityRequestMapper;
 import com.example.On_class.domain.api.IBootcampServicePort;
-import com.example.On_class.domain.api.ICapacityServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

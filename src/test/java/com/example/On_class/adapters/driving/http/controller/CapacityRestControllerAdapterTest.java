@@ -40,9 +40,9 @@ class CapacityRestControllerAdapterTest {
     void testAddCapacity() {
         CapacityRestControllerAdapter controller = new CapacityRestControllerAdapter(
                 capacityServicePort, capacityRequestMapper, capacityResponseMapper);
-        Technology technology1 = new Technology(1L, "Java", "Programming Language" );
+
         List<Technology> technologies = new ArrayList<>();
-        technologies.add(technology1);
+        technologies.add(new Technology(1L, "Java", "Programming Language" ));
 
         AddCapacityRequest request = new AddCapacityRequest("Proof2", "Fronted",  technologies);;
         when(capacityRequestMapper.addRequestToCapacity(request)).thenReturn(any());
@@ -50,7 +50,7 @@ class CapacityRestControllerAdapterTest {
         ResponseEntity<Void> response = controller.addCapacity(request);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        verify(capacityServicePort,times(1)).saveCapacity(any());
+        verify(capacityServicePort, times(1)).saveCapacity(any());
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.On_class.adapters.driven.jpa.mysql.exception;
+package com.example.On_class.domain.exceptions;
 
 public class RepeatCapacitiesInListException extends RuntimeException{
     public RepeatCapacitiesInListException(){

@@ -38,9 +38,8 @@ class CapacityAdapterTest {
 
     @Test
     void saveCapacity_SuccessfullySaved() {
-        Technology technology1 = new Technology(1L, "Java", "Programming Language" );
         List<Technology> technologies = new ArrayList<>();
-        technologies.add(technology1);
+        technologies.add(new Technology(1L, "Java", "Programming Language" ));
 
         Capacity capacity = new Capacity(2L, "Proof2", "Fronted", technologies);
         CapacityEntity capacityEntity = new CapacityEntity();
