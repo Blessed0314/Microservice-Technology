@@ -1,8 +1,8 @@
 package com.example.On_class.configuration.exceptionhandler;
 
 import com.example.On_class.adapters.driven.jpa.mysql.exception.NoDataFoundException;
-import com.example.On_class.domain.exceptions.RepeatCapacitiesInListException;
-import com.example.On_class.domain.exceptions.RepeatTechnologiesInListException;
+import com.example.On_class.domain.exception.RepeatCapacitiesInListException;
+import com.example.On_class.domain.exception.RepeatTechnologiesInListException;
 import com.example.On_class.adapters.driven.jpa.mysql.exception.TechnologyAlreadyExistsException;
 import com.example.On_class.configuration.Constants;
 import lombok.RequiredArgsConstructor;

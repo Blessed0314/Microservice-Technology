@@ -24,7 +24,7 @@ class AddBootcampRequestTest {
     void testConstructorAndGetters(){
         String name = "Proof3";
         String description = "Bootcamp description";
-        List<Capacity> capacities = createListCapacities(3,1);
+        List<Capacity> capacities = createListCapacities(4,1);
 
         AddBootcampRequest request = new AddBootcampRequest(name, description, capacities);
         assertEquals(name, request.getName());

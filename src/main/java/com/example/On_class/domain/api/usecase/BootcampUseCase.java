@@ -1,6 +1,6 @@
 package com.example.On_class.domain.api.usecase;
 
-import com.example.On_class.domain.exceptions.RepeatCapacitiesInListException;
+import com.example.On_class.domain.exception.RepeatCapacitiesInListException;
 import com.example.On_class.domain.api.IBootcampServicePort;
 import com.example.On_class.domain.model.Bootcamp;
 import com.example.On_class.domain.model.Capacity;

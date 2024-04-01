@@ -1,6 +1,6 @@
 package com.example.On_class.domain.api.usecase;
 
-import com.example.On_class.domain.exceptions.RepeatTechnologiesInListException;
+import com.example.On_class.domain.exception.RepeatTechnologiesInListException;
 import com.example.On_class.domain.api.ICapacityServicePort;
 import com.example.On_class.domain.model.Capacity;
 import com.example.On_class.domain.model.Technology;
