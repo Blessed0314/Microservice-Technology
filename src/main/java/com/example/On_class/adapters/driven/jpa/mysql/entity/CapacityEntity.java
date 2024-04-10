@@ -9,20 +9,24 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
-@Table(name = "technology")
+@Table(name = "capacity")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class TechnologyEntity {
+public class CapacityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
 
-    @ManyToMany(mappedBy = "technologies")
-    private List<CapacityEntity> capacities = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "capacity_technology",
+            joinColumns = @JoinColumn(name = "capacity_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
+    )
+    private List<TechnologyEntity> technologies = new ArrayList<>();
 }
