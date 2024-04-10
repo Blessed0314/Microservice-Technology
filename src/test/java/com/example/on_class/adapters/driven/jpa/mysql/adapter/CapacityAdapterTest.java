@@ -52,11 +52,12 @@ class CapacityAdapterTest {
     }
 
     @Test
-    void getAllTechnologies_Error_DataFound(){
+    void getAllCapacities_Error_DataFound(){
         int page = 0;
         int size = 20;
         boolean ascendingFlag = true;
         boolean orderFlag = true;
+
         PageRequest pagination = PageRequest.of(page, size, Sort.by(ascendingFlag ? Sort.Direction.ASC : Sort.Direction.DESC, "name"));
 
         when(capacityRepository.findAll(pagination)).thenReturn(new PageImpl<>(Collections.emptyList()));

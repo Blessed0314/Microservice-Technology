@@ -18,9 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
+import static org.mockito.Mockito.*;
 
 class BootcampUseCaseTest {
     private final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -68,4 +66,26 @@ class BootcampUseCaseTest {
         verify(bootcampPersistencePort, times(0)).saveBootcamp(bootcamp);
     }
 
+    @Test
+    void testGetAllBootcamps(){
+        List<Technology> technologies = new ArrayList<>();
+        technologies.add(new Technology(2L,"Java","Programing Language"));
+        technologies.add(new Technology(3L,"Python","Programming Language"));
+
+        List<Capacity> capacities = new ArrayList<>();
+        Capacity capacity1 = new Capacity(1L, "Proof2", "Fronted", technologies);
+        Capacity capacity2 = new Capacity(2L, "Proof3", "Backend", technologies);
+        capacities.add(capacity1);
+        capacities.add(capacity2);
+
+        List<Bootcamp> expectedBootcampList = new ArrayList<>();
+        expectedBootcampList.add(new Bootcamp(1L, "Proof1", "Proof description", capacities));
+        expectedBootcampList.add(new Bootcamp(2L, "Proof2", "Proof description", capacities));
+
+        when(bootcampPersistencePort.getAllBootcamps(1,10,true,true)).thenReturn(expectedBootcampList);
+
+        List<Bootcamp> actualBootcampList = bootcampServicePort.getAllBootcamps(1,10,true,true);
+
+        assertEquals(expectedBootcampList, actualBootcampList);
+    }
 }
