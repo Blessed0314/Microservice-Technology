@@ -12,9 +12,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 class CapacityUseCaseTest {
 
@@ -39,5 +38,22 @@ class CapacityUseCaseTest {
         capacityServicePort.saveCapacity(capacity);
 
         verify(capacityPersistencePort, times(1)).saveCapacity(capacity);
+    }
+
+    @Test
+    void testGetAllCapacities(){
+        List<Technology> technologies = new ArrayList<>();
+        technologies.add(new Technology(2L,"Java","Programing Language"));
+        technologies.add(new Technology(3L,"Python","Programming Language"));
+
+        List<Capacity> expectedCapacityList = new ArrayList<>();
+        expectedCapacityList.add(new Capacity(1L,"Proof1","Proof description", technologies));
+        expectedCapacityList.add(new Capacity(2L,"Proof2","Proof description", technologies));
+
+        when(capacityPersistencePort.getAllCapacities(1,10,true,true)).thenReturn(expectedCapacityList);
+
+        List<Capacity> actualCapacityList = capacityServicePort.getAllCapacities(1,10,true,true);
+
+        assertEquals(expectedCapacityList, actualCapacityList);
     }
 }
