@@ -29,10 +29,9 @@ class CapacityUseCaseTest {
 
     @Test
     void testSaveCapacity() {
-        String name = "proof2";
-        String description = "Fronted";
         List<Technology> technologies = new ArrayList<>();
         technologies.add(new Technology(1L, "Java", "Programming Language" ));
+
         Capacity capacity = new Capacity(1L, "Proof1", "Fronted", technologies);
 
         capacityServicePort.saveCapacity(capacity);

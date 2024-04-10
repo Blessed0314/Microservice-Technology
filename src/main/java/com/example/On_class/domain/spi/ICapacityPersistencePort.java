@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface ICapacityPersistencePort {
     void saveCapacity(Capacity capacity);
-
     List<Capacity> getAllCapacities(Integer page, Integer size, boolean orderFlag, boolean ascendingFlag);
 }
