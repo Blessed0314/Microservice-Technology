@@ -20,13 +20,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class TechnologyRestControllerAdapterTest {
-
     @Mock
     private ITechnologyServicePort technologyServicePort;
-
     @Mock
     private ITechnologyRequestMapper technologyRequestMapper;
-
     @Mock
     private ITechnologyResponseMapper technologyResponseMapper;
 

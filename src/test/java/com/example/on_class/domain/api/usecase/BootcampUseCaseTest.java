@@ -21,19 +21,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class BootcampUseCaseTest {
-    private final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    private final Validator validator = factory.getValidator();
-
     @Mock
     private IBootcampPersistencePort bootcampPersistencePort;
     private IBootcampServicePort bootcampServicePort;
-    private BootcampUseCase bootcampUseCase;
 
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
         bootcampServicePort = new BootcampUseCase(bootcampPersistencePort);
-        bootcampUseCase = new BootcampUseCase(bootcampPersistencePort);
     }
 
     @Test
@@ -62,7 +57,7 @@ class BootcampUseCaseTest {
 
         Bootcamp bootcamp = new Bootcamp(1L,"Proof3", "Bootcamp description", capacities);
 
-        assertThrows(RepeatCapacitiesInListException.class, () -> bootcampUseCase.saveBootcamp(bootcamp));
+        assertThrows(RepeatCapacitiesInListException.class, () -> bootcampServicePort.saveBootcamp(bootcamp));
         verify(bootcampPersistencePort, times(0)).saveBootcamp(bootcamp);
     }
 
@@ -88,4 +83,5 @@ class BootcampUseCaseTest {
 
         assertEquals(expectedBootcampList, actualBootcampList);
     }
+
 }
