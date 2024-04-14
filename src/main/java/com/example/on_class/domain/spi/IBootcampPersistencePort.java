@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface IBootcampPersistencePort {
     void saveBootcamp(Bootcamp bootcamp);
-    List<Bootcamp> getAllBootcamps(
-            Integer page, Integer size, boolean orderFlag, boolean ascendingFlag);
+    List<Bootcamp> getAllBootcamps(Integer page, Integer size, boolean orderFlag, boolean ascendingFlag);
 }

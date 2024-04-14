@@ -27,7 +27,10 @@ public class TechnologyRestControllerAdapter {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping("/")
-    public ResponseEntity<List<TechnologyResponse>> getTechnologyList(@RequestParam Integer page, @RequestParam Integer size, @RequestParam Boolean ascendingFlag){
+    public ResponseEntity<List<TechnologyResponse>> getTechnologyList(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "true") boolean ascendingFlag){
         return ResponseEntity.ok(technologyResponseMapper.toTechnologyResponseList(technologyServicePort.getAllTechnologies(page, size, ascendingFlag)));
     }
 }

@@ -28,7 +28,11 @@ public class BootcampRestControllerAdapter {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<BootcampResponse>> getBootcampList(@RequestParam Integer page, @RequestParam Integer size, @RequestParam boolean orderFlag, @RequestParam boolean ascendingFlag){
+    public ResponseEntity<List<BootcampResponse>> getBootcampList(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "false") boolean orderFlag,
+            @RequestParam(defaultValue = "true") boolean ascendingFlag){
         return ResponseEntity.ok(bootcampResponseMapper.toBootcampResponseList(bootcampServicePort.getAllBootcamps(page, size, orderFlag, ascendingFlag)));
     }
 }
