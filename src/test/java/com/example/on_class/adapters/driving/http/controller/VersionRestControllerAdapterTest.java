@@ -2,6 +2,7 @@ package com.example.on_class.adapters.driving.http.controller;
 
 import com.example.on_class.adapters.driving.http.dto.request.AddVersionRequest;
 import com.example.on_class.adapters.driving.http.mapper.IVersionRequestMapper;
+import com.example.on_class.adapters.driving.http.mapper.IVersionResponseMapper;
 import com.example.on_class.domain.api.IVersionServicePort;
 import com.example.on_class.domain.model.Bootcamp;
 import com.example.on_class.domain.model.Capacity;
@@ -26,6 +27,8 @@ class VersionRestControllerAdapterTest {
     private IVersionServicePort versionServicePort;
     @Mock
     private IVersionRequestMapper versionRequestMapper;
+    @Mock
+    private IVersionResponseMapper versionResponseMapper;
 
     @BeforeEach
     void setUp(){
@@ -35,7 +38,7 @@ class VersionRestControllerAdapterTest {
     @Test
     void testAddValidVersion() {
         VersionRestControllerAdapter controller = new VersionRestControllerAdapter(
-                versionServicePort, versionRequestMapper);
+                versionServicePort, versionRequestMapper, versionResponseMapper);
 
         List<Technology> technologies = new ArrayList<>();
         technologies.add(new Technology(1L, "Java", "Programming Language" ));
