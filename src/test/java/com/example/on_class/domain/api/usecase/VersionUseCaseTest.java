@@ -75,6 +75,26 @@ class VersionUseCaseTest {
         verify(versionPersistencePort, never()).saveVersion(version);
     }
 
+    @Test
+    void testGetAllVersions() {
+        LocalDate today = LocalDate.now();
+        LocalDate initialDate1 = today.plusDays(1);
+        LocalDate endDate1 = today.plusDays(10);
+        LocalDate initialDate2 = today.plusDays(2);
+        LocalDate endDate2 = today.plusDays(11);
+
+        Version version1 = new Version(1L, 30, initialDate1, endDate1, createBootcamp());
+        Version version2 = new Version(2L, 25, initialDate2, endDate2, createBootcamp());
+        List<Version> expectedVersions = List.of(version1, version2);
+
+        when(versionPersistencePort.getAllVersions(null, 0, 10, 0, true)).thenReturn(expectedVersions);
+
+        List<Version> actualVersions = versionServicePort.getAllVersions(null, 0, 10, 0, true);
+
+        assertEquals(expectedVersions.size(), actualVersions.size());
+        assertTrue(expectedVersions.containsAll(actualVersions));
+    }
+
     private Bootcamp createBootcamp() {
         List<Technology> technologies = new ArrayList<>();
         technologies.add(new Technology(1L, "Java", "Programming Language"));

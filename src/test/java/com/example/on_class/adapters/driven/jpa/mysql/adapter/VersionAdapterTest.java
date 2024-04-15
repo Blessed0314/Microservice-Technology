@@ -11,14 +11,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
 class VersionAdapterTest {
     @Mock
@@ -54,5 +57,48 @@ class VersionAdapterTest {
         versionAdapter.saveVersion(version);
 
         verify(versionRepository).save(versionEntityMapper.toEntity(version));
+    }
+
+    @Test
+    void testGetAllVersions_WhenBootcampNotNull() {
+        List<VersionEntity> versionEntities = new ArrayList<>();
+        versionEntities.add(new VersionEntity());
+
+        Pageable pagination = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "initialDate"));
+
+        Version mockedVersion = mock(Version.class);
+
+        when(versionEntityMapper.toModelList(versionEntities))
+                .thenReturn(List.of(mockedVersion));
+
+        Page<VersionEntity> page = new PageImpl<>(versionEntities);
+        when(versionRepository.findAllByBootcampName("bootcamp", pagination)).thenReturn(page);
+
+        List<Version> versions = versionAdapter.getAllVersions("bootcamp", 0, 10, 1, true);
+
+        assertNotNull(versions);
+        assertEquals(1, versions.size());
+    }
+
+    @Test
+    void testGetAllVersions_WhenBootcampIsNull() {
+        List<VersionEntity> versionEntities = new ArrayList<>();
+        versionEntities.add(new VersionEntity());
+
+        Pageable pagination = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "initialDate"));
+
+        Version mockedVersion = mock(Version.class);
+
+        when(versionEntityMapper.toModelList(versionEntities))
+                .thenReturn(List.of(mockedVersion));
+
+        Page<VersionEntity> page = new PageImpl<>(versionEntities);
+        when(versionRepository.findAll(pagination)).thenReturn(page);
+
+        List<Version> versions = versionAdapter.getAllVersions(null, 0, 10, 1, true);
+
+        assertNotNull(versions);
+        assertEquals(1, versions.size());
+        verify(versionRepository).findAll(pagination);
     }
 }
