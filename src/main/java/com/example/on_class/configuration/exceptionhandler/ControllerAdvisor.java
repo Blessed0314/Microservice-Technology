@@ -1,5 +1,6 @@
 package com.example.on_class.configuration.exceptionhandler;
 
+import com.example.on_class.adapters.driven.jpa.mysql.exception.IncorrectParamException;
 import com.example.on_class.adapters.driven.jpa.mysql.exception.NoDataFoundException;
 import com.example.on_class.domain.exception.IncorrectEndDateException;
 import com.example.on_class.domain.exception.IncorrectInitialDateException;
@@ -83,6 +84,15 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> handleIncorrectInitialDateException(){
         return ResponseEntity.badRequest().body(new ExceptionResponse(
                 Constants.INCORRECT_INITIAL_DATE_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(IncorrectParamException.class)
+    public ResponseEntity<ExceptionResponse> handleIncorrectParamException() {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.INCORRECT_PARAM_EXCEPTION_MESSAGE,
                 HttpStatus.BAD_REQUEST.toString(),
                 LocalDateTime.now()
         ));
