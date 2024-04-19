@@ -1,6 +1,8 @@
 package com.example.on_class.configuration.exceptionhandler;
 
 import com.example.on_class.adapters.driven.jpa.mysql.exception.NoDataFoundException;
+import com.example.on_class.domain.exception.IncorrectEndDateException;
+import com.example.on_class.domain.exception.IncorrectInitialDateException;
 import com.example.on_class.domain.exception.RepeatCapacitiesInListException;
 import com.example.on_class.domain.exception.RepeatTechnologiesInListException;
 import com.example.on_class.adapters.driven.jpa.mysql.exception.TechnologyAlreadyExistsException;
@@ -25,36 +27,64 @@ public class ControllerAdvisor {
             errorMessage.append(error.getDefaultMessage()).append("; ");
         }
         errorMessage.delete(errorMessage.length() - 2, errorMessage.length());
-
-        ExceptionResponse response = new ExceptionResponse(
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
                 errorMessage.toString(),
                 HttpStatus.BAD_REQUEST.toString(),
                 LocalDateTime.now()
-        );
-
-        return ResponseEntity.badRequest().body(response);
+        ));
     }
+
     @ExceptionHandler(TechnologyAlreadyExistsException.class)
     public ResponseEntity<ExceptionResponse> handleTechnologyAlreadyExistsException() {
-        return ResponseEntity.badRequest().body(new ExceptionResponse(Constants.TECHNOLOGY_ALREADY_EXISTS_EXCEPTION_MESSAGE,
-                HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.TECHNOLOGY_ALREADY_EXISTS_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
     }
 
     @ExceptionHandler(NoDataFoundException.class)
     public ResponseEntity<ExceptionResponse> handleNoDataFoundException() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionResponse(
-                Constants.NO_DATA_FOUND_EXCEPTION_MESSAGE, HttpStatus.NOT_FOUND.toString(), LocalDateTime.now()));
+                Constants.NO_DATA_FOUND_EXCEPTION_MESSAGE,
+                HttpStatus.NOT_FOUND.toString(),
+                LocalDateTime.now()
+        ));
     }
 
     @ExceptionHandler(RepeatTechnologiesInListException.class)
     public ResponseEntity<ExceptionResponse> handleRepeatTechnologiesInListException() {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
-                Constants.REPEAT_TECHNOLOGY_IN_LIST_EXCEPTION_MESSAGE, HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
+                Constants.REPEAT_TECHNOLOGY_IN_LIST_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
     }
 
     @ExceptionHandler(RepeatCapacitiesInListException.class)
     public ResponseEntity<ExceptionResponse> handleRepeatCapacitiesInListException() {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
-                Constants.REPEAT_CAPACITY_IN_LIST_EXCEPTION_MESSAGE, HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()));
+                Constants.REPEAT_CAPACITY_IN_LIST_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(IncorrectEndDateException.class)
+    public ResponseEntity<ExceptionResponse> handleIncorrectEndDateException() {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.INCORRECT_END_DATE_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(IncorrectInitialDateException.class)
+    public ResponseEntity<ExceptionResponse> handleIncorrectInitialDateException(){
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                Constants.INCORRECT_INITIAL_DATE_EXCEPTION_MESSAGE,
+                HttpStatus.BAD_REQUEST.toString(),
+                LocalDateTime.now()
+        ));
     }
 }
